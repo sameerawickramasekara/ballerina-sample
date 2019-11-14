@@ -1,6 +1,8 @@
 import ballerina/http;
 import ballerina/log;
 
+int counter = 0;
+
 @http:ServiceConfig {
     basePath: "/"
 }
@@ -11,6 +13,8 @@ service hello on new http:Listener(9090) {
     }
     resource function sayHello(http:Caller caller, http:Request req) {
 
+        log:printInfo("call received to sayHello. counter = " + counter.toString());
+        counter += counter;
         var result = caller->respond("Hello, World!");
 
         if (result is error) {
@@ -23,6 +27,8 @@ service hello on new http:Listener(9090) {
     }
     resource function sayHelloBallerina(http:Caller caller, http:Request req) {
 
+        log:printInfo("call received to sayHelloBallerina. counter = " + counter.toString());
+        counter += counter;
         var result = caller->respond("Hello, Ballerina!");
 
         if (result is error) {
