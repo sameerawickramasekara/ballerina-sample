@@ -6,7 +6,7 @@ int counter = 0;
 @http:ServiceConfig {
     basePath: "/"
 }
-service hello on new http:Listener(9090) {
+service hello on new http:Listener(9091) {
 
     @http:ResourceConfig {
         path: "/"
